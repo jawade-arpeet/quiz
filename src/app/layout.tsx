@@ -6,7 +6,7 @@ import cn from "./utils/cn";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Upraised",
+  title: "Quiz",
   description: "A quizzing website",
 };
 
