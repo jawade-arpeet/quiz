@@ -1,6 +1,8 @@
-import { Question } from "./question";
 
-interface Response extends Question {
+interface Response {
+  question: string;
+  options: string[];
+  answer: string;
   response: string;
 }
 
