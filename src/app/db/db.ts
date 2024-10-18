@@ -1,4 +1,6 @@
-const questions = [
+import { Question } from "../types/question";
+
+const questions: Question[] = [
   {
     id: 1,
     question: "What is the capital of India?",
@@ -31,6 +33,6 @@ const questions = [
   },
 ];
 
-const responses = [];
+const responses: Response[] = [];
 
 export { questions, responses };

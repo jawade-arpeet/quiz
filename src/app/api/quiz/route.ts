@@ -1,40 +1,17 @@
-import { NextResponse } from "next/server";
-
-const questions = [
-  {
-    id: 1,
-    question: "What is the capital of India?",
-    options: ["Delhi", "London", "Berlin", "Rome"],
-    answer: "Paris",
-  },
-  {
-    id: 2,
-    question: "What is the capital of Germany?",
-    options: ["Berlin", "London", "Paris", "Rome"],
-    answer: "Berlin",
-  },
-  {
-    id: 3,
-    question: "What is the capital of Italy?",
-    options: ["Rome", "London", "Paris", "Berlin"],
-    answer: "Rome",
-  },
-  {
-    id: 4,
-    question: "What is the capital of Spain?",
-    options: ["Madrid", "London", "Paris", "Berlin"],
-    answer: "Madrid",
-  },
-  {
-    id: 5,
-    question: "What is the capital of Sweden?",
-    options: ["Stockholm", "London", "Paris", "Berlin"],
-    answer: "Stockholm",
-  },
-];
+import { questions, responses } from "@/app/db/db";
+import { NextRequest, NextResponse } from "next/server";
 
 function GET() {
-  return NextResponse.json(questions);
+  return NextResponse.json(questions, { status: 200 });
 }
 
-export { GET };
+async function POST(req: NextRequest) {
+  const data = await req.json();
+  responses.push(data);
+  return NextResponse.json(
+    { success: true, message: "Data saved" },
+    { status: 201 }
+  );
+}
+
+export { GET, POST };
