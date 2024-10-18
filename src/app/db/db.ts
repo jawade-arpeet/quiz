@@ -1,4 +1,5 @@
 import { Question } from "../types/question";
+import { Response } from "../types/response";
 
 const questions: Question[] = [
   {
