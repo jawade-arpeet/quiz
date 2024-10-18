@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "../component/ui/button";
+import Button from "../components/ui/button";
 import { Question } from "../types/question";
 import { useRouter } from "next/navigation";
 
@@ -44,7 +44,7 @@ function QuizPage() {
   if (currentQuestion === questions.length - 1) {
     router.push("/result");
   }
-  
+
   const question = questions[currentQuestion];
 
   return (

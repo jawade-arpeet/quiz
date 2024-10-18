@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Button from "../component/ui/button";
+import Button from "../components/ui/button";
 import Link from "next/link";
 
 interface Data {

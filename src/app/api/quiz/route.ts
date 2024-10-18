@@ -1,17 +1,27 @@
-import { questions, responses } from "@/app/db/db";
+import { prisma } from "@/app/db/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-function GET() {
-  return NextResponse.json(questions, { status: 200 });
+async function GET() {
+  try {
+    const questions = await prisma.question.findMany();
+    return NextResponse.json(questions);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ success: false, error }, { status: 400 });
+  }
 }
 
 async function POST(req: NextRequest) {
-  const data = await req.json();
-  responses.push(data);
-  return NextResponse.json(
-    { success: true, message: "Data saved" },
-    { status: 201 }
-  );
+  try {
+    const { id, response } = await req.json();
+    await prisma.response.create({
+      data: { questionId: id, response: response },
+    });
+    return NextResponse.json({ success: true }, { status: 201 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ success: false, error }, { status: 400 });
+  }
 }
 
 export { GET, POST };
